@@ -25,12 +25,19 @@
 <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;">
   {% for product in products %}
 <div style="border:1px solid #ddd; padding:14px; border-radius:12px;">
-  {% if product.image %}
-    <a href="{% url 'reviews:product_detail' product.slug %}">
-      <img src="{{ product.image.url }}" alt="{{ product.name }}"
-           style="width:100%; height:170px; object-fit:cover; border-radius:12px;">
+<a href="{% url 'reviews:product_detail' product.slug %}">
+    {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}"
+            style="width:100%; height:170px; object-fit:cover; border-radius:12px;">
+    {% elif product.amazon_image_url %}
+        <img src="{{ product.amazon_image_url }}" alt="{{ product.name }}"
+            style="width:100%; height:170px; object-fit:cover; border-radius:12px;">
+    {% else %}
+        <div style="width:100%; height:170px; border:1px dashed #ddd; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#777;">
+        No image
+        </div>
+    {% endif %}
     </a>
-  {% endif %}
 
   <div style="display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-top:10px;">
     <h2 style="margin:0; font-size:20px; line-height:1.2;">
