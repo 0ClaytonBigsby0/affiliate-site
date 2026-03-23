@@ -23,7 +23,6 @@ class Product(models.Model):
     meta_title = models.CharField(max_length=255, blank=True)
     meta_description = models.CharField(max_length=160, blank=True)
 
-    # NEW ✅
     rating = models.DecimalField(
         max_digits=2,
         decimal_places=1,
@@ -34,15 +33,21 @@ class Product(models.Model):
     pros = models.TextField(blank=True, help_text="One pro per line")
     cons = models.TextField(blank=True, help_text="One con per line")
 
-    # ✅ Amazon-ready fields
     asin = models.CharField(max_length=10, blank=True, db_index=True, help_text="10-char Amazon ASIN")
     amazon_image_url = models.URLField(blank=True, help_text="Set by API later (do not upload Amazon images yourself)")
 
     def __str__(self):
         return self.name
 
+    @property
+    def pros_list(self):
+        return [line.strip() for line in self.pros.splitlines() if line.strip()]
+
+    @property
+    def cons_list(self):
+        return [line.strip() for line in self.cons.splitlines() if line.strip()]
+
     def save(self, *args, **kwargs):
-        # Optional: try to extract ASIN automatically from affiliate_link if asin is empty
         if not self.asin and self.affiliate_link:
             m = re.search(r"/dp/([A-Z0-9]{10})|/gp/product/([A-Z0-9]{10})|asin=([A-Z0-9]{10})", self.affiliate_link)
             if m:
@@ -61,7 +66,10 @@ class Article(models.Model):
     slug = models.SlugField(unique=True)
     excerpt = models.TextField(blank=True)
     content = models.TextField()
+    featured_image = models.ImageField(upload_to="articles/", null=True, blank=True)
     products = models.ManyToManyField(Product, blank=True, related_name="articles")
+    verdict = models.TextField(blank=True)
+    best_for = models.CharField(max_length=255, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     meta_title = models.CharField(max_length=255, blank=True)
     meta_description = models.CharField(max_length=160, blank=True)

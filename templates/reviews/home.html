@@ -23,22 +23,56 @@
   </div>
 </section>
 
-<section style="margin-bottom:26px;">
-  <h2 style="margin:0 0 10px;">📰 Latest articles</h2>
-  <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:14px;">
+<section class="latest-articles-section">
+  <h2 class="latest-articles-title">📰 Latest articles</h2>
+
+  <div class="latest-articles-grid">
     {% for a in latest_articles %}
-      <div style="border:1px solid #eee; border-radius:16px; padding:14px;">
-        <a href="{% url 'reviews:article_detail' a.slug %}" style="font-weight:800; font-size:16px;">
-          {{ a.title }}
-        </a>
-        <div style="margin-top:6px; color:#666; font-size:13px;">
-          {% if a.category %}
-            <a href="{% url 'reviews:category_detail' a.category.slug %}">{{ a.category.name }}</a>
+      <article class="article-card">
+        <a href="{% url 'reviews:article_detail' a.slug %}" class="article-card-image-link">
+          {% if a.featured_image %}
+            <img src="{{ a.featured_image.url }}" alt="{{ a.title }}" class="article-card-real-image">
+          {% else %}
+            <div class="
+              article-card-image
+              {% if a.category and a.category.slug == 'gaming' %}
+                article-theme-gaming
+              {% elif a.category and a.category.slug == 'office' %}
+                article-theme-office
+              {% elif a.category and a.category.slug == 'budget' %}
+                article-theme-budget
+              {% else %}
+                article-theme-default
+              {% endif %}
+            ">
+              {% if a.category %}
+                {{ a.category.name }}
+              {% else %}
+                Article
+              {% endif %}
+            </div>
           {% endif %}
-          • {{ a.created_at|date:"d M Y" }}
+        </a>
+
+        <div class="article-card-content">
+          <div class="article-card-meta">
+            {% if a.category %}
+              <a href="{% url 'reviews:category_detail' a.category.slug %}" class="article-card-badge">
+                {{ a.category.name }}
+              </a>
+            {% endif %}
+            <span class="article-card-date">{{ a.created_at|date:"d M Y" }}</span>
+          </div>
+
+          <a href="{% url 'reviews:article_detail' a.slug %}" class="article-card-title">
+            {{ a.title }}
+          </a>
+
+          <p class="article-card-excerpt">
+            {{ a.excerpt|truncatechars:140 }}
+          </p>
         </div>
-        <p style="margin:8px 0 0; color:#444;">{{ a.excerpt|truncatechars:140 }}</p>
-      </div>
+      </article>
     {% empty %}
       <p>No articles yet.</p>
     {% endfor %}
