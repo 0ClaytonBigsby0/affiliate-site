@@ -1,0 +1,36 @@
+<div class="inline-product-card">
+  <div class="inline-product-card-media">
+    <a href="{% url 'reviews:product_detail' product.slug %}" class="inline-product-card-image-link">
+      {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="inline-product-card-image">
+      {% else %}
+        <div class="inline-product-card-placeholder">No image</div>
+      {% endif %}
+    </a>
+  </div>
+
+  <div class="inline-product-card-content">
+    <p class="inline-product-card-kicker">Mentioned in this article</p>
+
+    <h3 class="inline-product-card-title">
+      <a href="{% url 'reviews:product_detail' product.slug %}">{{ product.name }}</a>
+    </h3>
+
+    <p class="inline-product-card-price">£{{ product.price }}</p>
+
+    {% if product.description %}
+      <p class="inline-product-card-description">
+        {{ product.description|truncatechars:140 }}
+      </p>
+    {% endif %}
+
+    <div class="inline-product-card-actions">
+      <a href="{% url 'reviews:product_detail' product.slug %}" class="inline-product-card-secondary-btn">
+        View details
+      </a>
+      <a href="{% url 'reviews:affiliate_redirect' product.slug %}" class="inline-product-card-primary-btn">
+        Check price →
+      </a>
+    </div>
+  </div>
+</div>
