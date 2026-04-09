@@ -1,22 +1,79 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ category.name }}</h1>
+<div class="category-page">
 
-  {% for product in products %}
-    <div>
-      <h2>
-        <a href="{% url 'reviews:product_detail' product.slug %}">
-          {{ product.name }}
-        </a>
-      </h2>
-      <p>{{ product.description }}</p>
-      <p>£{{ product.price }}</p>
+  <header class="category-header">
+    <p class="category-kicker">Browse category</p>
+    <h1 class="category-title">{{ category.name }}</h1>
+
+    <p class="category-description">
+      Explore products and related recommendations in the {{ category.name|lower }} category.
+    </p>
+  </header>
+
+    {% if category.articles.exists %}
+    <section class="category-featured-articles">
+        <div class="section-heading">
+        <p class="section-kicker">Featured content</p>
+        <h2 class="section-title">Related articles</h2>
+        </div>
+
+        <div class="category-articles-grid">
+        {% for article in category.articles.all|slice:":2" %}
+            {% include "reviews/includes/article_card.html" with article=article %}
+        {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+  <section class="category-products-section">
+    <div class="section-heading">
+      <p class="section-kicker">Products</p>
+      <h2 class="section-title">{{ category.name }} picks</h2>
     </div>
-    <hr>
-  {% empty %}
-    <p>No products in this category yet.</p>
-  {% endfor %}
 
-  <p><a href="{% url 'reviews:product_list' %}">Back to Product List</a></p>
+    <div class="category-products-grid">
+      {% for product in products %}
+        <div class="category-product-card">
+          {% if product.image %}
+            <a href="{% url 'reviews:product_detail' product.slug %}" class="category-product-image-link">
+              <img src="{{ product.image.url }}" alt="{{ product.name }}" class="category-product-image">
+            </a>
+          {% endif %}
+
+          <div class="category-product-body">
+            <h3 class="category-product-title">
+              <a href="{% url 'reviews:product_detail' product.slug %}">
+                {{ product.name }}
+              </a>
+            </h3>
+
+            <p class="category-product-price">£{{ product.price }}</p>
+
+            <p class="category-product-description">
+              {{ product.description|truncatechars:140 }}
+            </p>
+
+            <div class="category-product-actions">
+              <a href="{% url 'reviews:product_detail' product.slug %}" class="category-product-secondary-btn">
+                Details
+              </a>
+              <a href="{% url 'reviews:affiliate_redirect' product.slug %}" class="category-product-primary-btn">
+                Buy now →
+              </a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p>No products in this category yet.</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <p class="category-back-link-wrap">
+    <a href="{% url 'reviews:product_list' %}" class="category-back-link">← Back to Product List</a>
+  </p>
+
+</div>
 {% endblock %}

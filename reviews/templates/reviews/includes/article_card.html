@@ -1,0 +1,49 @@
+<article class="article-card">
+  <a href="{% url 'reviews:article_detail' article.slug %}" class="article-card-image-link">
+    {% if article.featured_image %}
+      <img src="{{ article.featured_image.url }}" alt="{{ article.title }}" class="article-card-real-image">
+    {% else %}
+      <div class="
+        article-card-image
+        {% if article.category and article.category.slug == 'gaming' %}
+          article-theme-gaming
+        {% elif article.category and article.category.slug == 'office' %}
+          article-theme-office
+        {% elif article.category and article.category.slug == 'budget' %}
+          article-theme-budget
+        {% else %}
+          article-theme-default
+        {% endif %}
+      ">
+        {% if article.category %}
+          {{ article.category.name }}
+        {% else %}
+          Article
+        {% endif %}
+      </div>
+    {% endif %}
+  </a>
+
+  <div class="article-card-content">
+    <div class="article-card-meta">
+      {% if article.category %}
+        <a href="{% url 'reviews:category_detail' article.category.slug %}" class="article-card-badge">
+          {{ article.category.name }}
+        </a>
+      {% endif %}
+      <span class="article-card-date">{{ article.created_at|date:"d M Y" }}</span>
+    </div>
+
+    <a href="{% url 'reviews:article_detail' article.slug %}" class="article-card-title">
+      {{ article.title }}
+    </a>
+
+    <p class="article-card-excerpt">
+      {% if article.excerpt %}
+        {{ article.excerpt|truncatechars:140 }}
+      {% else %}
+        {{ article.content|truncatechars:140 }}
+      {% endif %}
+    </p>
+  </div>
+</article>

@@ -1,123 +1,144 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Product List</h1>
+<div class="products-page">
 
-<form method="get" style="display:flex; gap:12px; align-items:center; margin:12px 0;">
-  <input type="text" name="q" placeholder="Search..." value="{{ q }}">
-  <select name="sort">
-    <option value="name" {% if sort == "name" %}selected{% endif %}>Name (A–Z)</option>
-    <option value="-name" {% if sort == "-name" %}selected{% endif %}>Name (Z–A)</option>
-    <option value="price" {% if sort == "price" %}selected{% endif %}>Price (low → high)</option>
-    <option value="-price" {% if sort == "-price" %}selected{% endif %}>Price (high → low)</option>
-  </select>
+  <header class="products-header">
+    <p class="products-kicker">Browse products</p>
+    <h1 class="products-title">Product List</h1>
+    <p class="products-description">
+      Explore product picks, compare pros and cons, and jump straight to the detail page or affiliate link.
+    </p>
+  </header>
 
-  <select name="cat">
-    <option value="">All categories</option>
-    {% for c in nav_categories %}
-      <option value="{{ c.slug }}" {% if cat == c.slug %}selected{% endif %}>{{ c.name }}</option>
-    {% endfor %}
-  </select>
+  <section class="products-toolbar">
+    <form method="get" class="products-toolbar-form">
+      <input type="text" name="q" placeholder="Search..." value="{{ q }}" class="products-toolbar-input">
 
-  <button type="submit">Apply</button>
-</form>
+      <select name="sort" class="products-toolbar-select">
+        <option value="name" {% if sort == "name" %}selected{% endif %}>Name (A–Z)</option>
+        <option value="-name" {% if sort == "-name" %}selected{% endif %}>Name (Z–A)</option>
+        <option value="price" {% if sort == "price" %}selected{% endif %}>Price (low → high)</option>
+        <option value="-price" {% if sort == "-price" %}selected{% endif %}>Price (high → low)</option>
+      </select>
 
-<div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;">
-  {% for product in products %}
-<div style="border:1px solid #ddd; padding:14px; border-radius:12px;">
-<a href="{% url 'reviews:product_detail' product.slug %}">
-    {% if product.image %}
-        <img src="{{ product.image.url }}" alt="{{ product.name }}"
-            style="width:100%; height:170px; object-fit:cover; border-radius:12px;">
-    {% elif product.amazon_image_url %}
-        <img src="{{ product.amazon_image_url }}" alt="{{ product.name }}"
-            style="width:100%; height:170px; object-fit:cover; border-radius:12px;">
-    {% else %}
-        <div style="width:100%; height:170px; border:1px dashed #ddd; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#777;">
-        No image
+      <select name="cat" class="products-toolbar-select">
+        <option value="">All categories</option>
+        {% for c in nav_categories %}
+          <option value="{{ c.slug }}" {% if cat == c.slug %}selected{% endif %}>{{ c.name }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="submit" class="products-toolbar-button">Apply</button>
+    </form>
+  </section>
+
+  <section class="products-grid">
+    {% for product in products %}
+      <article class="product-card">
+
+        <a href="{% url 'reviews:product_detail' product.slug %}" class="product-card-image-link">
+          {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-card-image">
+          {% elif product.amazon_image_url %}
+            <img src="{{ product.amazon_image_url }}" alt="{{ product.name }}" class="product-card-image">
+          {% else %}
+            <div class="product-card-image-placeholder">No image</div>
+          {% endif %}
+        </a>
+
+        <div class="product-card-body">
+          <div class="product-card-header">
+            <h2 class="product-card-title">
+              <a href="{% url 'reviews:product_detail' product.slug %}">{{ product.name }}</a>
+            </h2>
+
+            <div class="product-card-rating">
+              {% include "reviews/_stars.html" with rating=product.rating %}
+            </div>
+          </div>
+
+          <div class="product-card-meta">
+            <div>
+              {% if product.category %}
+                <a href="{% url 'reviews:category_detail' product.category.slug %}" class="product-card-category-badge">
+                  {{ product.category.name }}
+                </a>
+              {% else %}
+                <span class="product-card-category-badge product-card-category-badge--muted">Uncategorized</span>
+              {% endif %}
+            </div>
+
+            <div class="product-card-price">£{{ product.price }}</div>
+          </div>
+
+          <p class="product-card-description">
+            {{ product.description|truncatechars:110 }}
+          </p>
+
+          <div class="product-card-points">
+            <div class="product-card-points-box">
+              <div class="product-card-points-title">Pros</div>
+              {% if product.pros_list %}
+                <ul class="product-card-list">
+                  {% for line in product.pros_list|slice:":3" %}
+                    <li>{{ line }}</li>
+                  {% endfor %}
+                </ul>
+              {% else %}
+                <div class="product-card-empty">—</div>
+              {% endif %}
+            </div>
+
+            <div class="product-card-points-box">
+              <div class="product-card-points-title">Cons</div>
+              {% if product.cons_list %}
+                <ul class="product-card-list">
+                  {% for line in product.cons_list|slice:":3" %}
+                    <li>{{ line }}</li>
+                  {% endfor %}
+                </ul>
+              {% else %}
+                <div class="product-card-empty">—</div>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="product-card-actions">
+            <a href="{% url 'reviews:affiliate_redirect' product.slug %}" target="_blank" rel="noopener" class="product-card-buy">
+              Buy on Amazon →
+            </a>
+
+            <a href="{% url 'reviews:product_detail' product.slug %}" class="product-card-details">
+              Details
+            </a>
+          </div>
         </div>
+
+      </article>
+    {% empty %}
+      <p class="products-empty">No products found.</p>
+    {% endfor %}
+  </section>
+
+  <nav class="products-pagination">
+    {% if page_obj.has_previous %}
+      <a href="?q={{ q }}&sort={{ sort }}&cat={{ cat }}&page={{ page_obj.previous_page_number }}" class="products-pagination-link">
+        ← Prev
+      </a>
     {% endif %}
-    </a>
 
-  <div style="display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-top:10px;">
-    <h2 style="margin:0; font-size:20px; line-height:1.2;">
-      <a href="{% url 'reviews:product_detail' product.slug %}">{{ product.name }}</a>
-    </h2>
+    <span class="products-pagination-current">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    </span>
 
-    <div style="white-space:nowrap;">
-      {% include "reviews/_stars.html" with rating=product.rating %}
-    </div>
-  </div>
+    {% if page_obj.has_next %}
+      <a href="?q={{ q }}&sort={{ sort }}&cat={{ cat }}&page={{ page_obj.next_page_number }}" class="products-pagination-link">
+        Next →
+      </a>
+    {% endif %}
+  </nav>
 
-  <div style="display:flex; justify-content:space-between; align-items:center; margin:8px 0 10px;">
-    <div style="color:#555; font-size:14px;">
-      {% if product.category %}
-        <a href="{% url 'reviews:category_detail' product.category.slug %}">{{ product.category.name }}</a>
-      {% else %}
-        <span>Uncategorized</span>
-      {% endif %}
-    </div>
-    <div style="font-weight:700;">£{{ product.price }}</div>
-  </div>
-
-  <p style="margin:0 0 10px; color:#333;">
-    {{ product.description|truncatechars:110 }}
-  </p>
-
-  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin:10px 0 12px;">
-    <div style="border:1px solid #eee; border-radius:10px; padding:10px;">
-      <div style="font-weight:700; margin-bottom:6px;">Pros</div>
-      {% if product.pros %}
-        <ul style="margin:0; padding-left:18px;">
-          {% for line in product.pros.splitlines %}
-            {% if line %}<li>{{ line }}</li>{% endif %}
-          {% endfor %}
-        </ul>
-      {% else %}
-        <div style="color:#777;">—</div>
-      {% endif %}
-    </div>
-
-    <div style="border:1px solid #eee; border-radius:10px; padding:10px;">
-      <div style="font-weight:700; margin-bottom:6px;">Cons</div>
-      {% if product.cons %}
-        <ul style="margin:0; padding-left:18px;">
-          {% for line in product.cons.splitlines %}
-            {% if line %}<li>{{ line }}</li>{% endif %}
-          {% endfor %}
-        </ul>
-      {% else %}
-        <div style="color:#777;">—</div>
-      {% endif %}
-    </div>
-  </div>
-
-  <div style="display:flex; gap:10px; align-items:center;">
-    <a href="{% url 'reviews:affiliate_redirect' product.slug %}" target="_blank" rel="noopener"
-       style="padding:10px 12px; border:1px solid #2e9b45; border-radius:10px; text-decoration:none;">
-      Buy on Amazon →
-    </a>
-
-    <a href="{% url 'reviews:product_detail' product.slug %}" style="text-decoration:none;">
-      Details
-    </a>
-  </div>
-</div>
-  {% empty %}
-    <p>No products found.</p>
-  {% endfor %}
-</div>
-
-<div style="margin-top:16px; display:flex; gap:12px; align-items:center;">
-  {% if page_obj.has_previous %}
-    <a href="?q={{ q }}&sort={{ sort }}&cat={{ cat }}&page={{ page_obj.previous_page_number }}">Prev</a>
-  {% endif %}
-
-  <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
-
-  {% if page_obj.has_next %}
-    <a href="?q={{ q }}&sort={{ sort }}&cat={{ cat }}&page={{ page_obj.next_page_number }}">Next</a>
-  {% endif %}
 </div>
 
 {% endblock %}

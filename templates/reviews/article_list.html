@@ -1,47 +1,58 @@
 {% extends "base.html" %}
+
 {% block content %}
+<div class="articles-page">
 
-<h1>Articles</h1>
+  <header class="articles-header">
+    <p class="articles-kicker">Browse content</p>
+    <h1 class="articles-title">Articles</h1>
+    <p class="articles-description">
+      Explore curated buying guides, category roundups, and product-focused recommendations.
+    </p>
+  </header>
 
-<form method="get" style="display:flex; gap:12px; align-items:center; margin:12px 0;">
-  <input type="text" name="q" placeholder="Search articles..." value="{{ q }}">
-  <button type="submit">Search</button>
-</form>
+  <section class="articles-toolbar">
+    <form method="get" class="articles-search-form">
+      <input
+        type="text"
+        name="q"
+        value="{{ q }}"
+        placeholder="Search articles..."
+        class="articles-search-input"
+      >
+      <button type="submit" class="articles-search-button">Search</button>
+    </form>
+  </section>
 
-{% for a in articles %}
-  <div style="border:1px solid #ddd; padding:12px; border-radius:10px; margin-bottom:12px;">
-    <h2 style="margin:0 0 8px;">
-      <a href="{% url 'reviews:article_detail' a.slug %}">{{ a.title }}</a>
-    </h2>
-
-    {% if a.category %}
-      <p style="margin:0 0 8px;">
-        Category: <a href="/?cat={{ a.category.slug }}">{{ a.category.name }}</a>
-      </p>
-    {% endif %}
-
-    {% if a.excerpt %}
-      <p style="margin:0;">{{ a.excerpt|truncatechars:180 }}</p>
-    {% else %}
-      <p style="margin:0;">{{ a.content|truncatechars:180 }}</p>
-    {% endif %}
+<section class="articles-grid-section">
+  <div class="articles-grid">
+    {% for a in articles %}
+      {% include "reviews/includes/article_card.html" with article=a %}
+    {% empty %}
+      <p class="articles-empty">No articles yet.</p>
+    {% endfor %}
   </div>
-{% empty %}
-  <p>No articles yet.</p>
-{% endfor %}
+</section>
 
-{% if is_paginated %}
-  <div style="margin-top:16px; display:flex; gap:12px; align-items:center;">
-    {% if page_obj.has_previous %}
-      <a href="?q={{ q }}&page={{ page_obj.previous_page_number }}">Prev</a>
-    {% endif %}
+  {% if is_paginated %}
+    <nav class="articles-pagination">
+      {% if page_obj.has_previous %}
+        <a href="?q={{ q }}&page={{ page_obj.previous_page_number }}" class="articles-pagination-link">
+          ← Prev
+        </a>
+      {% endif %}
 
-    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+      <span class="articles-pagination-current">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+      </span>
 
-    {% if page_obj.has_next %}
-      <a href="?q={{ q }}&page={{ page_obj.next_page_number }}">Next</a>
-    {% endif %}
-  </div>
-{% endif %}
+      {% if page_obj.has_next %}
+        <a href="?q={{ q }}&page={{ page_obj.next_page_number }}" class="articles-pagination-link">
+          Next →
+        </a>
+      {% endif %}
+    </nav>
+  {% endif %}
 
+</div>
 {% endblock %}
