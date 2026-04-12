@@ -1,31 +1,51 @@
 {# templates/reviews/_stars.html #}
 {% with r=rating|default:0 %}
-<span style="display:inline-flex; gap:3px; align-items:center; white-space:nowrap;">
+<span class="rating-stars" aria-label="Rating {{ r }} out of 5">
   {# 1 #}
-  {% if r >= 1 %}<span style="color:#1f9d3a;">★</span>
-  {% elif r >= 0.5 %}<span style="color:#1f9d3a;">⯨</span>
-  {% else %}<span style="color:#bbb;">☆</span>{% endif %}
+  {% if r >= 1 %}
+    <span class="rating-star full">★</span>
+  {% elif r >= 0.5 %}
+    <span class="rating-star half">★</span>
+  {% else %}
+    <span class="rating-star empty">★</span>
+  {% endif %}
 
   {# 2 #}
-  {% if r >= 2 %}<span style="color:#1f9d3a;">★</span>
-  {% elif r >= 1.5 %}<span style="color:#1f9d3a;">⯨</span>
-  {% else %}<span style="color:#bbb;">☆</span>{% endif %}
+  {% if r >= 2 %}
+    <span class="rating-star full">★</span>
+  {% elif r >= 1.5 %}
+    <span class="rating-star half">★</span>
+  {% else %}
+    <span class="rating-star empty">★</span>
+  {% endif %}
 
   {# 3 #}
-  {% if r >= 3 %}<span style="color:#1f9d3a;">★</span>
-  {% elif r >= 2.5 %}<span style="color:#1f9d3a;">⯨</span>
-  {% else %}<span style="color:#bbb;">☆</span>{% endif %}
+  {% if r >= 3 %}
+    <span class="rating-star full">★</span>
+  {% elif r >= 2.5 %}
+    <span class="rating-star half">★</span>
+  {% else %}
+    <span class="rating-star empty">★</span>
+  {% endif %}
 
   {# 4 #}
-  {% if r >= 4 %}<span style="color:#1f9d3a;">★</span>
-  {% elif r >= 3.5 %}<span style="color:#1f9d3a;">⯨</span>
-  {% else %}<span style="color:#bbb;">☆</span>{% endif %}
+  {% if r >= 4 %}
+    <span class="rating-star full">★</span>
+  {% elif r >= 3.5 %}
+    <span class="rating-star half">★</span>
+  {% else %}
+    <span class="rating-star empty">★</span>
+  {% endif %}
 
   {# 5 #}
-  {% if r >= 5 %}<span style="color:#1f9d3a;">★</span>
-  {% elif r >= 4.5 %}<span style="color:#1f9d3a;">⯨</span>
-  {% else %}<span style="color:#bbb;">☆</span>{% endif %}
+  {% if r >= 5 %}
+    <span class="rating-star full">★</span>
+  {% elif r >= 4.5 %}
+    <span class="rating-star half">★</span>
+  {% else %}
+    <span class="rating-star empty">★</span>
+  {% endif %}
 
-  <span style="color:#666; font-size:12px; margin-left:6px;">{{ r }}/5</span>
+  <span class="rating-text">{{ r }}/5</span>
 </span>
 {% endwith %}

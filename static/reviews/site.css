@@ -2082,3 +2082,45 @@ a:hover{ text-decoration:underline; }
     scroll-snap-align: start;
   }
 }
+
+.rating-stars {
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.rating-star {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  font-size: 1em;
+}
+
+.rating-star.full {
+  color: #1f9d3a;
+}
+
+.rating-star.empty {
+  color: #bbb;
+}
+
+.rating-star.half {
+  color: #bbb;
+}
+
+.rating-star.half::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  overflow: hidden;
+  color: #1f9d3a;
+}
+
+.rating-text {
+  color: #666;
+  font-size: 12px;
+  margin-left: 6px;
+}
