@@ -61,7 +61,7 @@ source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 python manage.py migrate
-
+```
 ## 🔮 Future Improvements
 
 - Amazon API integration  
