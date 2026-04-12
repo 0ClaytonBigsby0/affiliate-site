@@ -61,6 +61,9 @@ source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+
 ```
 ## 🔮 Future Improvements
 
@@ -84,5 +87,3 @@ python manage.py migrate
 ## 💡 Notes
 
 This project is part of my transition into a professional web development career, focusing on real-world, production-ready applications.
-python manage.py createsuperuser
-python manage.py runserver
