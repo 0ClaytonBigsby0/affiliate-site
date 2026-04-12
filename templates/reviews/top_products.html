@@ -1,21 +1,70 @@
 {% extends "base.html" %}
+{% load ratings %}
 {% block content %}
 
-<h1>Top Clicked Products</h1>
+<section class="home-section">
+  <h1 class="page-title">Top Picks Right Now</h1>
+  <p class="page-subtitle">
+    The products getting the most attention right now.
+  </p>
 
-{% for product in products %}
-  <div>
-    <h2>
-      <a href="{% url 'reviews:product_detail' product.slug %}">
-        {{ product.name }}
-      </a>
-    </h2>
-    <p>Clicks: {{ product.clicks }}</p>
-    <p>£{{ product.price }}</p>
-    <hr>
+  <div class="top-products-grid">
+    {% for product in products %}
+      <article class="home-product-card">
+        {% if product.image %}
+          <a href="{% url 'reviews:product_detail' product.slug %}">
+            <img
+              src="{{ product.image.url }}"
+              alt="{{ product.name }}"
+              class="home-product-image"
+            >
+          </a>
+        {% elif product.amazon_image_url %}
+          <a href="{% url 'reviews:product_detail' product.slug %}">
+            <img
+              src="{{ product.amazon_image_url }}"
+              alt="{{ product.name }}"
+              class="home-product-image"
+            >
+          </a>
+        {% endif %}
+
+        <div class="home-product-header">
+          <div>
+            <a href="{% url 'reviews:product_detail' product.slug %}" class="home-product-name">
+              {{ product.name }}
+            </a>
+
+            <div class="home-product-category">
+              {% if product.category %}
+                <a href="{% url 'reviews:category_detail' product.category.slug %}">
+                  {{ product.category.name }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="home-product-rating">
+            {% include "reviews/_stars.html" with rating=product.rating %}
+          </div>
+        </div>
+
+        <div class="home-product-meta">
+          <strong>£{{ product.price }}</strong>
+          <span class="home-product-clicks">{{ product.clicks }} clicks</span>
+        </div>
+
+        <div class="home-product-actions">
+          <a class="btn" href="{% url 'reviews:affiliate_redirect' product.slug %}" target="_blank" rel="noopener">
+            Buy →
+          </a>
+          <a href="{% url 'reviews:product_detail' product.slug %}">Details</a>
+        </div>
+      </article>
+    {% empty %}
+      <p>No products yet.</p>
+    {% endfor %}
   </div>
-{% empty %}
-  <p>No products yet.</p>
-{% endfor %}
+</section>
 
 {% endblock %}

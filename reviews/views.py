@@ -89,7 +89,7 @@ class TopProductsView(ListView):
     context_object_name = "products"
 
     def get_queryset(self):
-        return Product.objects.order_by("-clicks")[:5]
+        return Product.objects.order_by("-clicks")[:6]
     
 class ArticleListView(ListView):
     model = Article
