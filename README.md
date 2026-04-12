@@ -7,6 +7,27 @@ Designed to showcase curated product picks, detailed reviews, and track affiliat
 
 ---
 
+## 📸 Preview
+
+### 🖥️ Homepage (Desktop)
+<p align="center">
+  <a href="https://matty-dev.com">
+    <img src="screenshots/homepage-desktop.png" width="800">
+  </a>
+</p>
+
+### 📱 Mobile View
+<p align="center">
+  <img src="screenshots/homepage-mobile.png" width="300">
+</p>
+
+### 🛒 Product Listing
+<p align="center">
+  <img src="screenshots/product-list.png" width="800">
+</p>
+
+---
+
 ## ✨ Features
 
 - 📰 Article system (buying guides, top picks, category-based content)
