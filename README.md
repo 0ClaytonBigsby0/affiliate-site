@@ -61,5 +61,28 @@ source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 python manage.py migrate
+
+## 🔮 Future Improvements
+
+- Amazon API integration  
+- User accounts & saved products  
+- Product comparison tool  
+- Pagination / infinite scroll  
+- PostgreSQL migration  
+- SEO improvements (structured data, sitemap)  
+
+---
+
+## 👨‍💻 Author
+
+**Mateusz Obstawski**  
+🔗 https://github.com/mattywebdev  
+🔗 https://www.linkedin.com/in/mateusz-obstawski-9a355ba0/
+
+---
+
+## 💡 Notes
+
+This project is part of my transition into a professional web development career, focusing on real-world, production-ready applications.
 python manage.py createsuperuser
 python manage.py runserver
