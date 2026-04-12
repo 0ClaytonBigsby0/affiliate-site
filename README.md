@@ -84,7 +84,16 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
+```
+---
 
+## 🚀 Deployment (simplified)
+
+```bash
+git pull origin main
+source venv/bin/activate
+python manage.py collectstatic --noinput
+systemctl restart gunicorn
 ```
 ## 🔮 Future Improvements
 
