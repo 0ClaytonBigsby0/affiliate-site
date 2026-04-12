@@ -198,3 +198,9 @@ class HomePageView(TemplateView):
         context["all_categories"] = Category.objects.all()
 
         return context
+    
+def contact(request):
+    return render(request, "reviews/contact.html")
+
+def privacy(request):
+    return render(request, "reviews/privacy.html")

@@ -14,4 +14,6 @@ urlpatterns = [
     path("articles/<slug:slug>/", ArticleDetailView.as_view(), name="article_detail"),
     path("analytics/", views.analytics_dashboard, name="analytics"),
     path("products/<slug:slug>/", ProductDetailView.as_view(), name="product_detail"),
+    path('contact/', views.contact, name='contact'),
+    path('privacy/', views.privacy, name='privacy'),
 ]
