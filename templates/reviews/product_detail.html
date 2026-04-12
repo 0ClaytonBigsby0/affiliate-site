@@ -155,19 +155,9 @@
 
     <div style="margin-top:12px;">
       <div class="stars" aria-label="Rating {{ product.rating }} out of 5">
-        {% star_states product.rating as stars %}
-        {% for s in stars %}
-          {% if s == "full" %}
-            <span class="star">★</span>
-          {% elif s == "half" %}
-            <span class="star">⯪</span>
-          {% else %}
-            <span class="star-empty">★</span>
-          {% endif %}
-        {% endfor %}
-        <span class="muted" style="font-size:14px; margin-left:6px;">
-          {{ product.rating }}/5
-        </span>
+            <div class="product-card-rating">
+              {% include "reviews/_stars.html" with rating=product.rating %}
+            </div>
       </div>
 
       {% if product.category %}
