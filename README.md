@@ -1,24 +1,65 @@
-# Amazon Affiliate Review Site
+# 🚀 Affiliate Review Site
 
-Niche product review site (e.g. tech/gadgets) built with Django. Goal: display products, user reviews, track clicks to Amazon affiliate links (pending approval).
+A niche product review platform built with Django, focused on tech/gadgets.  
+Designed to showcase curated product picks, detailed reviews, and track affiliate clicks.
 
-## Current Features
-- Product listing with category filtering, sorting
-- Click tracking & redirect for affiliate links
-- Homepage + basic CSS styling
-- Media upload for product images
-- Separate apps: core + reviews
+🔗 **Live:** https://matty-dev.com
 
-## Tech Stack
-- Django 5.x
-- Python 3.x
-- (add any extras from requirements.txt)
+---
 
-## Setup (local)
+## ✨ Features
+
+- 📰 Article system (buying guides, top picks, category-based content)
+- 🛒 Product catalog with categories (Gaming, Office, Budget, etc.)
+- ⭐ Ratings with half-star support
+- ✅ Pros & Cons system
+- 🔗 Affiliate click tracking & redirect system
+- 📊 Click analytics per product
+- 🏠 Dynamic homepage:
+  - Latest articles
+  - Top rated products
+  - Most clicked products
+- 🔐 Admin analytics panel (staff only)
+- 🖼️ Custom media handling (product + article images)
+- 📱 Mobile-friendly responsive layout
+- ⚙️ Production-ready setup (Gunicorn, static/media config)
+
+---
+
+## 🧱 Tech Stack
+
+- **Backend:** Django 6.x  
+- **Language:** Python 3.12  
+- **Frontend:** HTML, CSS (custom, no framework)  
+- **Database:** SQLite (PostgreSQL ready)  
+- **Deployment:** DigitalOcean (Ubuntu + Gunicorn)
+
+---
+
+## 🧠 Key Concepts
+
+- Django class-based views  
+- Slug-based routing  
+- Template partials (`_stars.html`)  
+- Context processors (dynamic navigation)  
+- Click tracking system  
+- JSON fixtures (`loaddata`)  
+- Static & media file handling  
+- Responsive UI patterns  
+
+---
+
+## ⚙️ Local Setup
+
 ```bash
+git clone https://github.com/mattywebdev/affiliate-site.git
+cd affiliate-site
+
 python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
+source venv/bin/activate   # Windows: venv\Scripts\activate
+
 pip install -r requirements.txt
+
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
