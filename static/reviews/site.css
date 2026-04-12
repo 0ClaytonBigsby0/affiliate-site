@@ -1759,3 +1759,246 @@ a:hover{ text-decoration:underline; }
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================
+   Mobile fixes
+   ========================= */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .container,
+  .page-container,
+  .content-container,
+  .hero,
+  .section,
+  .section-inner {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+
+  /* Header / nav */
+  .site-header,
+  .navbar,
+  .nav,
+  .nav-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .nav-links,
+  .navbar-nav,
+  .menu,
+  .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-start;
+  }
+
+  .nav-links a,
+  .navbar-nav a,
+  .menu a,
+  .site-nav a {
+    font-size: 1rem;
+  }
+
+  .search-form,
+  .navbar-search,
+  form[role="search"] {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .search-form input,
+  .navbar-search input,
+  form[role="search"] input[type="text"],
+  form[role="search"] input[type="search"] {
+    flex: 1 1 100%;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .search-form button,
+  .navbar-search button,
+  form[role="search"] button {
+    width: auto;
+    align-self: flex-start;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .hero-actions,
+  .hero-buttons,
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero-actions a,
+  .hero-buttons a,
+  .cta-row a,
+  .hero-actions button,
+  .hero-buttons button {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .feature-list,
+  .hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+
+  /* Article cards */
+  .article-grid,
+  .articles-grid,
+  .post-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .article-card,
+  .post-card {
+    width: 100%;
+  }
+
+  .article-card img,
+  .post-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Product grids */
+  .product-grid,
+  .products-grid,
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .product-card {
+    width: 100%;
+    min-width: 0;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  .product-card img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    display: block;
+    margin: 0 auto 12px;
+  }
+
+  .product-card h3,
+  .product-title {
+    font-size: 1.05rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .product-meta,
+  .product-rating-row,
+  .price-row,
+  .product-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .product-actions a,
+  .product-actions button {
+    flex: 1 1 auto;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Filters / forms */
+  .filters,
+  .filter-bar,
+  .product-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .filters input,
+  .filters select,
+  .filters button,
+  .filter-bar input,
+  .filter-bar select,
+  .filter-bar button,
+  .product-filters input,
+  .product-filters select,
+  .product-filters button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Section headings */
+  h2.section-title,
+  .section-title {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  /* Reduce oversized spacing */
+  .section,
+  .homepage-section {
+    margin-top: 28px;
+    margin-bottom: 28px;
+  }
+}
+
+/* Tiny phones */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.85rem;
+  }
+
+  .hero {
+    padding: 20px 16px;
+  }
+
+  .product-card,
+  .article-card {
+    padding: 14px;
+  }
+
+  .product-card img {
+    max-width: 180px;
+  }
+}
