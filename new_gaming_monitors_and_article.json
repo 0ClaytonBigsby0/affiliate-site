@@ -1,0 +1,125 @@
+[
+  {
+    "model": "reviews.product",
+    "pk": 9,
+    "fields": {
+      "category": 1,
+      "name": "AOC Q27G3XMN – 27” 180Hz Mini-LED Gaming Monitor",
+      "slug": "aoc-q27g3xmn",
+      "description": "One of the strongest gaming monitors in the £200–£300 range right now. The Mini-LED backlight delivers excellent contrast and HDR punch that most budget monitors simply can’t match, while the 180Hz refresh rate keeps everything buttery smooth.",
+      "price": "259.99",
+      "affiliate_link": "https://www.amazon.co.uk/AOC-Gaming-Q27G3XMN-Monitor-HDR1000/dp/B0CNRPGQBG",
+      "image": "products/image.png",
+      "clicks": 0,
+      "meta_title": "AOC Q27G3XMN Review – Best Value 1440p Mini-LED Gaming Monitor 2026",
+      "meta_description": "Sharp 1440p, 180Hz, Mini-LED HDR1000 and excellent value – a standout gaming monitor on Amazon UK.",
+      "rating": "4.6",
+      "pros": "Mini-LED with HDR1000 for deep blacks and bright highlights\nSharp 1440p resolution with great colours\n180Hz + 1ms response time\nHeight-adjustable stand",
+      "cons": "VA panel has slightly slower pixel response than pure IPS\nHDR performance shines brightest in darker rooms",
+      "asin": "B0CNRPGQBG",
+      "amazon_image_url": ""
+    }
+  },
+  {
+    "model": "reviews.product",
+    "pk": 10,
+    "fields": {
+      "category": 1,
+      "name": "AOC Q27G4XD – 27” 180Hz Fast IPS Gaming Monitor",
+      "slug": "aoc-q27g4xd",
+      "description": "Looking for speed and colour accuracy without breaking the bank? This Fast IPS panel combines 180Hz refresh rate with excellent motion clarity and wide viewing angles – perfect for competitive and immersive gaming alike.",
+      "price": "209.99",
+      "affiliate_link": "https://www.amazon.co.uk/AOC-Gaming-Q27G4XD-FreeSync-DisplyPort/dp/B0CZ78S8GJ",
+      "image": "products/image.png",
+      "clicks": 0,
+      "meta_title": "AOC Q27G4XD Review – Fast IPS 1440p Gaming Monitor",
+      "meta_description": "Responsive 180Hz Fast IPS with sharp QHD and great motion handling.",
+      "rating": "4.5",
+      "pros": "Super responsive Fast IPS panel (0.5ms MPRT)\nSharp QHD resolution with vibrant colours\nAdaptive Sync (G-Sync compatible)\nHeight-adjustable stand",
+      "cons": "HDR400 is basic\nBlacks are good but not as deep as VA panels",
+      "asin": "B0CZ78S8GJ",
+      "amazon_image_url": ""
+    }
+  },
+  {
+    "model": "reviews.product",
+    "pk": 11,
+    "fields": {
+      "category": 1,
+      "name": "AOC 27G2ZNE – 27” 240Hz Gaming Monitor",
+      "slug": "aoc-27g2zne",
+      "description": "Pure speed on a budget. This 27\" 240Hz monitor is built for esports and competitive players who want maximum frame rates and the smoothest possible motion.",
+      "price": "149.99",
+      "affiliate_link": "https://www.amazon.co.uk/AOC-27G2ZNE-Monitor-FreeSync-Premium/dp/B0BT4Y1FY4",
+      "image": "products/image.png",
+      "clicks": 0,
+      "meta_title": "AOC 27G2ZNE Review – Best Budget 240Hz Gaming Monitor",
+      "meta_description": "Ultra-high 240Hz refresh rate at an affordable price – ideal for competitive gaming.",
+      "rating": "4.4",
+      "pros": "Blazing 240Hz refresh rate\nExcellent response time and Adaptive Sync\nHigh contrast VA panel",
+      "cons": "Only Full HD resolution\n1080p can look softer on 27\"\nStand is fairly basic",
+      "asin": "B0BT4Y1FY4",
+      "amazon_image_url": ""
+    }
+  },
+  {
+    "model": "reviews.product",
+    "pk": 12,
+    "fields": {
+      "category": 1,
+      "name": "Z-Edge 27\" QHD 240Hz Gaming Monitor",
+      "slug": "z-edge-27-qhd-240hz",
+      "description": "Insane specs for the money. This 27\" 1440p monitor pushes 240Hz with a fast IPS panel, giving you both sharp visuals and ultra-high refresh rate.",
+      "price": "189.99",
+      "affiliate_link": "https://www.amazon.co.uk/Z-Edge-2560x1440-Brightness-FlickerFree-DisplayPort/dp/B0DSPW29SZ",
+      "image": "products/image.png",
+      "clicks": 0,
+      "meta_title": "Z-Edge 27\" 240Hz QHD Gaming Monitor Review",
+      "meta_description": "High refresh rate 1440p gaming monitor with aggressive pricing and strong performance.",
+      "rating": "4.3",
+      "pros": "2560x1440 resolution + 240Hz\nFast 1ms response time\nBright panel with HDR10 support\nVery competitive pricing",
+      "cons": "Brand is less established than AOC\nStand and build quality are average",
+      "asin": "B0DSPW29SZ",
+      "amazon_image_url": ""
+    }
+  },
+  {
+    "model": "reviews.product",
+    "pk": 13,
+    "fields": {
+      "category": 1,
+      "name": "KOORUI 24E3 – 24” High Refresh Gaming Monitor",
+      "slug": "koorui-24e3",
+      "description": "Smaller size, bigger speed. The 24\" form factor is loved by competitive gamers. This model delivers high refresh rate, solid colours, and great value in a compact package.",
+      "price": "139.99",
+      "affiliate_link": "https://www.amazon.co.uk/KOORUI-Compatible-Adjustable-Mountable-DisplayPort/dp/B0B6B1RDKB",
+      "image": "products/image.png",
+      "clicks": 0,
+      "meta_title": "KOORUI 24E3 Review – Best Compact 24\" Gaming Monitor",
+      "meta_description": "Affordable high-refresh 24-inch monitor perfect for esports and competitive play.",
+      "rating": "4.2",
+      "pros": "Compact 24\" size ideal for esports\nHigh refresh rate (165Hz+) with fast response\nGood colour performance for the price\nSaves desk space",
+      "cons": "Only Full HD resolution\nLimited stand adjustability",
+      "asin": "B0B6B1RDKB",
+      "amazon_image_url": ""
+    }
+  },
+  {
+    "model": "reviews.article",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "title": "Best Gaming Monitors Under £300 in 2026 – 5 Strong Picks Compared",
+      "slug": "best-gaming-monitors-under-300-2026",
+      "excerpt": "Five excellent gaming monitors between £140–£260 that deliver real performance without breaking the bank.",
+      "content": "## Why these monitors are worth buying in 2026\n\nYou no longer need to spend £400+ to get a monitor that feels fast, sharp, and enjoyable. The five picks below all sit comfortably in the £140–£260 range and each brings something genuinely useful.\n\n### 🔥 Best overall – AOC Q27G3XMN\n**AOC Q27G3XMN** stands out as the best all-rounder thanks to its Mini-LED backlight.\n\n[product_image:aoc-q27g3xmn]\n\nIt delivers deep blacks, bright HDR highlights, and smooth 180Hz gameplay in sharp 1440p.\n\n[product_button:aoc-q27g3xmn]\n\n### Best speed & colour accuracy – AOC Q27G4XD\nIf you prefer lightning-fast motion and vibrant colours, choose the **AOC Q27G4XD**.\n\n[product_image:aoc-q27g4xd]\n\nIts Fast IPS panel offers excellent response times and wide viewing angles.\n\n[product_button:aoc-q27g4xd]\n\n### Best pure competitive speed – AOC 27G2ZNE\nWant maximum smoothness on a tight budget? The **AOC 27G2ZNE** gives you a blistering 240Hz.\n\n[product_image:aoc-27g2zne]\n\n[product_button:aoc-27g2zne]\n\n### Best high-refresh 1440p value – Z-Edge 27\" QHD 240Hz\nThe **Z-Edge 27\" 240Hz** combines sharp 1440p with ultra-high refresh rate.\n\n[product_image:z-edge-27-qhd-240hz]\n\n[product_button:z-edge-27-qhd-240hz]\n\n### Best compact esports pick – KOORUI 24E3\nThe **KOORUI 24E3** is perfect if you like the smaller 24\" size for competitive play.\n\n[product_image:koorui-24e3]\n\n[product_button:koorui-24e3]\n\n## Quick comparison\n\n| Product | Size | Resolution | Refresh Rate | Best for | Approx. Price |\n|---------|------|------------|--------------|----------|---------------|\n| AOC Q27G3XMN | 27\" | 1440p | 180Hz | Best overall + HDR | £260 |\n| AOC Q27G4XD | 27\" | 1440p | 180Hz | Speed & colours | £210 |\n| Z-Edge 27\" QHD 240Hz | 27\" | 1440p | 240Hz | High-res + high refresh | £190 |\n| AOC 27G2ZNE | 27\" | 1080p | 240Hz | Pure competitive speed | £150 |\n| KOORUI 24E3 | 24\" | 1080p | 165Hz+ | Compact esports | £140 |\n\n## Final verdict\n\n- Best balance → **AOC Q27G3XMN**\n- Raw speed & colours → **AOC Q27G4XD**\n- Maximum Hz on budget → **AOC 27G2ZNE** or **KOORUI 24E3**\n- Sharp 1440p + high refresh → **Z-Edge**\n\nAll five are currently available on Amazon UK and will give you a clear upgrade over basic monitors.",
+      "featured_image": "articles/Monitors_article.png",
+      "verdict": "Five excellent gaming monitors under £300 that deliver real speed, sharpness, and value in 2026.",
+      "best_for": "Gamers looking for strong performance without spending over £300",
+      "created_at": "2026-04-15T00:00:00Z",
+      "meta_title": "Best Gaming Monitors Under £300 in 2026 – 5 Top Picks Compared",
+      "meta_description": "Honest comparison of the best gaming monitors under £300 in 2026 with AOC, Z-Edge and KOORUI models.",
+      "products": [9, 10, 11, 12, 13]
+    }
+  }
+]

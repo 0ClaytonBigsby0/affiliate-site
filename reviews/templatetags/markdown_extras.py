@@ -13,6 +13,7 @@ register = template.Library()
 PRODUCT_CARD_PATTERN  = re.compile(r"\[product:([a-zA-Z0-9_-]+)\]")
 PRODUCT_IMAGE_PATTERN = re.compile(r"\[product_image:([a-zA-Z0-9_-]+)\]")
 PRODUCT_BUTTON_PATTERN = re.compile(r"\[product_button:([a-zA-Z0-9_-]+)\]")
+PRODUCT_PRICE_PATTERN = re.compile(r"\[product_price:([a-zA-Z0-9_-]+)\]")
 
 def replace_product_buttons(text):
     def repl(match):
@@ -53,6 +54,7 @@ def markdownify(text):
     text = replace_product_images(text)
     text = replace_product_buttons(text)
     text = replace_product_cards(text)
+    text = replace_product_prices(text)
 
     html = md.markdown(
         text,
@@ -81,3 +83,21 @@ def replace_product_images(text):
         )
 
     return PRODUCT_IMAGE_PATTERN.sub(repl, text)
+
+def replace_product_prices(text):
+    def repl(match):
+        slug = match.group(1)
+        product = get_product_by_slug(slug)
+
+        if not product:
+            return f"<strong>Price unavailable</strong>"
+
+        # Format the price nicely (you can customize this)
+        if product.price:
+            price_str = f"£{product.price}"
+            # Optional: make it bold or add a small style
+            return f'<span class="product-price">{price_str}</span>'
+        else:
+            return "Price not set"
+
+    return PRODUCT_PRICE_PATTERN.sub(repl, text)
