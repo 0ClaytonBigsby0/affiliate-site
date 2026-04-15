@@ -94,7 +94,7 @@ def replace_product_prices(text):
 
         # Format the price nicely (you can customize this)
         if product.price:
-            price_str = f"£{product.price}"
+            price_str = f"~£{product.price:.0f}"
             # Optional: make it bold or add a small style
             return f'<span class="product-price">{price_str}</span>'
         else:
