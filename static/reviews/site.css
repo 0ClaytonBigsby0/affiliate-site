@@ -611,24 +611,27 @@ a:hover{ text-decoration:underline; }
     padding: 12px 14px;
     border-bottom: 1px solid #e5e7eb;
     text-align: left;
-    vertical-align: middle;
+    vertical-align: top;
+    word-break: normal;
+    overflow-wrap: break-word;
 }
 
 /* Control column widths */
 .article-content-body th:nth-child(1),
 .article-content-body td:nth-child(1) {
-  width: 35%;
+  width: 38%;
 }
 
 .article-content-body th:nth-child(2),
 .article-content-body td:nth-child(2) {
-  width: 40%;
+  width: 37%;
 }
 
 .article-content-body th:nth-child(3),
 .article-content-body td:nth-child(3) {
   width: 25%;
-  text-align: right; /* 💰 price aligned nicely */
+  text-align: right;
+  white-space: nowrap;
 }
 
 /* Prevent ugly breaks */
