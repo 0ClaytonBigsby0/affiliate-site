@@ -528,21 +528,6 @@ a:hover{ text-decoration:underline; }
     overflow-x: hidden;
 }
 
-.article-table-scroll {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  margin: 18px 0;
-}
-
-.article-table-scroll table {
-  width: max-content;
-  min-width: 720px;
-  border-collapse: collapse;
-}
-
 .article-content-body table th,
 .article-content-body table td {
   padding: 14px 16px;
@@ -618,6 +603,7 @@ a:hover{ text-decoration:underline; }
     border-radius: 14px;
     border: 1px solid #e5e7eb;
     background: #fff;
+    table-layout: fixed;
 }
 
 .article-content-body th,
@@ -625,7 +611,29 @@ a:hover{ text-decoration:underline; }
     padding: 12px 14px;
     border-bottom: 1px solid #e5e7eb;
     text-align: left;
-    vertical-align: top;
+    vertical-align: middle;
+}
+
+/* Control column widths */
+.article-content-body th:nth-child(1),
+.article-content-body td:nth-child(1) {
+  width: 35%;
+}
+
+.article-content-body th:nth-child(2),
+.article-content-body td:nth-child(2) {
+  width: 40%;
+}
+
+.article-content-body th:nth-child(3),
+.article-content-body td:nth-child(3) {
+  width: 25%;
+  text-align: right; /* 💰 price aligned nicely */
+}
+
+/* Prevent ugly breaks */
+.article-content-body td {
+  word-break: break-word;
 }
 
 .article-content-body th {

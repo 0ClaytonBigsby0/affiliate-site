@@ -72,18 +72,5 @@
 
 </footer>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".article-content-body table").forEach(function (table) {
-    if (table.parentElement.classList.contains("article-table-scroll")) return;
-
-    const wrapper = document.createElement("div");
-    wrapper.className = "article-table-scroll";
-    table.parentNode.insertBefore(wrapper, table);
-    wrapper.appendChild(table);
-  });
-});
-</script>
-
 </body>
 </html>
