@@ -2158,3 +2158,24 @@ a:hover{ text-decoration:underline; }
   font-size: 12px;
   margin-left: 6px;
 }
+
+@media (max-width: 768px) {
+  .article-content {
+    overflow-x: hidden;
+  }
+
+  .article-table-scroll {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+  }
+
+  .article-table-scroll table {
+    min-width: 680px;
+  }
+
+  .article-content .btn {
+    max-width: 100%;
+    word-break: break-word;
+  }
+}
