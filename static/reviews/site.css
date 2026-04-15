@@ -528,6 +528,29 @@ a:hover{ text-decoration:underline; }
     overflow-x: hidden;
 }
 
+.article-table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  margin: 18px 0;
+}
+
+.article-table-scroll table {
+  width: max-content;
+  min-width: 720px;
+  border-collapse: collapse;
+}
+
+.article-content-body table th,
+.article-content-body table td {
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: top;
+}
+
+
 .article-content-body p {
     margin: 0 0 1.4em;
 }
@@ -2151,10 +2174,7 @@ a:hover{ text-decoration:underline; }
 }
 
 @media (max-width: 768px) {
-  .article-content-body table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
+  .article-content-body {
+    overflow-x: hidden;
   }
 }
