@@ -523,6 +523,7 @@ a:hover{ text-decoration:underline; }
     font-size: 19px;
     line-height: 1.95;
     color: #1f2937;
+    min-width: 0;
     max-width: 100%;
     overflow-x: hidden;
 }
@@ -588,8 +589,6 @@ a:hover{ text-decoration:underline; }
 
 .article-content-body table {
     width: 100%;
-    -webkit-overflow-scrolling: touch;
-    overflow-x: auto;
     border-collapse: collapse;
     margin: 1.8em 0;
     overflow: hidden;
@@ -598,19 +597,12 @@ a:hover{ text-decoration:underline; }
     background: #fff;
 }
 
-.article-content-body thead,
-.article-content-body tbody,
-.article-content-body tr {
-  width: 100%;
-}
-
 .article-content-body th,
 .article-content-body td {
     padding: 12px 14px;
     border-bottom: 1px solid #e5e7eb;
     text-align: left;
     vertical-align: top;
-    white-space: normal;
 }
 
 .article-content-body th {
@@ -626,7 +618,6 @@ a:hover{ text-decoration:underline; }
 }
 
 .article-content-body code {
-    max-width: 100%;
     padding: 2px 6px;
     border-radius: 8px;
     background: #f3f4f6;
@@ -2160,38 +2151,10 @@ a:hover{ text-decoration:underline; }
 }
 
 @media (max-width: 768px) {
-  .article-content {
-    overflow-x: hidden;
+  .article-content-body table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
   }
-
-  .article-table-scroll {
-    margin-left: -16px;
-    margin-right: -16px;
-    padding-left: 16px;
-  }
-
-  .article-table-scroll table {
-    min-width: 680px;
-  }
-
-  .article-content .btn {
-    max-width: 100%;
-    word-break: break-word;
-  }
-}
-
-.article-content,
-.container {
-  min-width: 0;
-}
-
-.article-table-scroll {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.article-table-scroll table {
-  min-width: 720px;
-  border-collapse: collapse;
 }
