@@ -9,3 +9,4 @@ staticfiles/
 media/
 data.json
 improved_data.json
+fixtures/*.json
